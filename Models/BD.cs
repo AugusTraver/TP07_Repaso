@@ -49,7 +49,7 @@ public class BD
     {
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string checkQuery = "SELECT * FROM Tareas WHERE idU = @IDU ";
+            string checkQuery = "SELECT * FROM Tareas WHERE idU = @IDU AND finalizada = 0";
             List<Tarea> Tareas = connection.Query<Tarea>(checkQuery, new { IDU = idU }).ToList();
             return Tareas;
         }
@@ -99,7 +99,7 @@ public class BD
     {
             using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string checkQuery = "UPDATE     UsuarioS SET ultimoLogin = GETDATE() where id = @idU ";
+            string checkQuery = "UPDATE UsuarioS SET ultimoLogin = GETDATE() where id = @idU ";
             Tarea tarea = connection.QueryFirstOrDefault<Tarea>(checkQuery, new { id= idU });
         }
     }

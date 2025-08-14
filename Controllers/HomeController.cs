@@ -12,9 +12,50 @@ public class HomeController : Controller
     {
         _logger = logger;
     }
-
+    [HttpPost]
     public IActionResult Index()
     {
-        return View();
+        return RedirectToAction("Login");
+    }
+    [HttpPost]
+    public IActionResult CargarTareas()
+    {
+        int idU = int.Parse(HttpContext.Session.GetString("usuario"));
+        ViewBag.Tareas = BD.TraerTareas(idU);
+        return View("Tareas");
+    }
+    [HttpPost]
+    public IActionResult DCrearTarea()
+    {
+        return View("CrearTarea");
+    }
+    [HttpPost]
+    public IActionResult CrearTarea(string titulo, string descripcion, bool finalizada)
+    {
+        int idU = int.Parse(HttpContext.Session.GetString("usuario"));
+        Tarea tarea = new Tarea(titulo, descripcion, DateTime.Now, finalizada, idU);
+        BD.CrearTarea(tarea);
+        return RedirectToAction("CargarTareas");
+    }
+    public IActionResult FinalizarTarea(int idTarea)
+    {
+        BD.FinalizarTarea(idTarea);
+        return RedirectToAction("CargarTareas");
+    }
+    public IActionResult EliminarTarea(int idTarea)
+    {
+        BD.EliminarTarea(idTarea);
+        return RedirectToAction("CargarTareas");
+    }
+    public IActionResult DActualizarTarea()
+    {
+        return View("ActualizarTarea");
+    }
+    public IActionResult ActualizarTarea(string titulo, string descripcion, DateTime fecha, bool finalizada)
+    {
+        int idU = int.Parse(HttpContext.Session.GetString("usuario"));
+        Tarea tarea = new Tarea(titulo, descripcion, fecha, finalizada, idU);
+        BD.ActualizarTarea(tarea);
+        return RedirectToAction("CargarTareas");
     }
 }
