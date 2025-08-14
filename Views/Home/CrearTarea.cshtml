@@ -3,6 +3,10 @@
 }
 <div>
     <form Action = '@Url.Action("CrearTarea", "home")'>
-     </form>
-
+  <input type="text" name="titulo" placeholder="Titulo">
+  <input type="text" name="descripcion" placeholder="Descripcion">
+  <input type="date" name="fecha">
+  <input type="checkbox" name="finalizada"> Finalizada
+  <input type="submit" value="Guardar">
+</form>
 </div>

@@ -15,9 +15,10 @@ public class AccountController : Controller
     {
         Usuario usuario = BD.IniciarSesion(username, password);
         HttpContext.Session.SetString("usuario", usuario.Id.ToString());
+        BD.ActualizarFechaLogin(usuario.Id);
         return RedirectToAction("CargarTareas");
     }
-    
+
     [HttpPost]
     public IActionResult DRegistrarse()
     {

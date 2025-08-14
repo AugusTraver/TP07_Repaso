@@ -1,0 +1,14 @@
+
+@{
+    ViewData["Title"] = "Index";
+}
+<a href='@Url.Action("CrearTarea", "home")'>Crear tarea</a>
+<a href='@Url.Action("FinalizarTarea", "home")'>Finalizar tarea</a>
+<a href='@Url.Action("EliminarTarea", "home")'>Eliminar tarea</a>
+<a href='@Url.Action("ActualizarTarea", "home")'>Actualizar tarea</a>
+ <ul>
+    @foreach (string tarea in ViewBag.Tareas)
+    {
+        <li>@tarea</li>
+    }    
+</ul>
