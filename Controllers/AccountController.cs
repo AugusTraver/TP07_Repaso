@@ -14,9 +14,15 @@ public class AccountController : Controller
     public IActionResult Login(string username, string password)
     {
         Usuario usuario = BD.IniciarSesion(username, password);
+        if (usuario == null)
+        {
+            return View("Login");
+        }
+        else{
         HttpContext.Session.SetString("usuario", usuario.Id.ToString());
         BD.ActualizarFechaLogin(usuario.Id);
-        return RedirectToAction("CargarTareas");
+        return RedirectToAction("CargarTareas","Home");
+        }
     }
 
     [HttpPost]
@@ -26,19 +32,42 @@ public class AccountController : Controller
     }
 
     [HttpPost]
-    public IActionResult Registrarse(string username, string password, string nombre, string apellido, string foto, DateTime ultimoLog)
+    public IActionResult Registrarse(
+    string username,
+    string password,
+    string nombre,
+    string apellido,
+    IFormFile fotoFile)
+{
+    string nombreFoto = null;
+
+    if (fotoFile != null && fotoFile.Length > 0)
     {
-        Usuario usu = new Usuario(username, password, nombre, apellido, foto, ultimoLog);
-        bool pudo = BD.Registrarse(usu);
-        if (pudo == true)
+        string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Imagenes");
+        Directory.CreateDirectory(carpeta);
+
+        nombreFoto = Path.GetFileName(fotoFile.FileName);
+        string ruta = Path.Combine(carpeta, nombreFoto);
+
+        using (var stream = new FileStream(ruta, FileMode.Create))
         {
-            return RedirectToAction("CargarTareas");
-        }
-        else
-        {
-            ViewBag.pudo = pudo;
-            return View("Registrarse");
+            fotoFile.CopyTo(stream);
         }
     }
+
+    Usuario usu = new Usuario(username, password, nombre, apellido, nombreFoto, DateTime.Now);
+
+    bool pudo = BD.Registrarse(usu);
+
+    if (pudo)
+    {
+        return RedirectToAction("CargarTareas","Home");
+    }
+    else
+    {
+        ViewBag.pudo = pudo;
+        return View("Registrarse");
+    }
+}
 
 }

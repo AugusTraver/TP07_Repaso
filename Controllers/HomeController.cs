@@ -15,7 +15,7 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Index()
     {
-        return RedirectToAction("Login");
+        return View();
     }
     [HttpPost]
     public IActionResult CargarTareas()

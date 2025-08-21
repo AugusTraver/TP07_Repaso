@@ -1,14 +1,31 @@
 @{
     ViewData["Title"] = "Index";
 }
-<div>
-     <form action='@Url.Action("Registrarse", "Account")' method="post">
-  <input type="text" name="username" placeholder="Usuario">
-  <input type="password" name="password" placeholder="Contraseña">
-  <input type="text" name="nombre" placeholder="Nombre">
-  <input type="text" name="apellido" placeholder="Apellido">
-  <input type="file" name="foto" accept="image/*">
-  <input type="datetime-local" name="ultimoLogin">
-  <input type="submit" value="Guardar">
+<div class = "Sumbit_Registrarse">
+  
+<form action='@Url.Action("Registrarse", "Account")' method="post" enctype="multipart/form-data">
+    <input type="text" name="username" placeholder="Usuario" required />
+    <br />
+
+    <input type="password" name="password" placeholder="Contraseña" required />
+    <br />
+
+    <input type="text" name="nombre" placeholder="Nombre" required />
+    <br />
+
+    <input type="text" name="apellido" placeholder="Apellido" required />
+    <br />
+
+    <input type="file" name="fotoFile" accept="image/*" />
+    <br />
+
+    <input type="submit" value="REGISTRARSE" />
 </form>
+@if (ViewBag.pudo != null && ViewBag.pudo == false)
+{
+    <div style="color:red; font-weight:bold; margin-top:10px;">
+        ❌ No se pudo registrar el usuario || Intente con otro nombre ❌
+    </div>
+}
+
 </div>

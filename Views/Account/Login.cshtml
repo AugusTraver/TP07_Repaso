@@ -2,10 +2,13 @@
     ViewData["Title"] = "Index";
 }
 
-<div>
+<div class = "Sumbit_Login">
        <form action = '@Url.Action("Login", "Account")' method ="post ">
-       <input type ="text "name ="uusername ">
+       <input type ="text "name ="username ">
        <input type ="password" name ="password " >
        <input type ="submit" name ="Enviar">
        </form>
+   <form class="Registrarse" action='@Url.Action("DRegistrarse","Home")' method="post">
+   <button type="submit">Registrarse</button>
+</form>
 </div>
