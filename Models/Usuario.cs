@@ -11,6 +11,8 @@ public class Usuario
     public string apellido { private set; get; }
     public string foto { private set; get; }
     public DateTime ultimoLogin { private set; get; }
+    public Usuario() { }
+
     public Usuario(string pusername, string ppassword, string pnombre, string papellido, string pfoto, DateTime pultimoLogin)
     {
         username = pusername;

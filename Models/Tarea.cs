@@ -9,6 +9,8 @@ public class Tarea
     public DateTime fecha { private set; get; }
     public bool finalizada { private set; get; }
     public int idU { private set; get; }
+    public Tarea() { }
+
     public Tarea(string titulo, string descripcion, DateTime fecha, bool finalizada, int idU)
     {
         this.titulo = titulo;

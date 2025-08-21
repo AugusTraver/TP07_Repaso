@@ -28,7 +28,7 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult DRegistrarse()
     {
-        return View("Registrarse");
+        return View("Registrar");
     }
 
     [HttpPost]
@@ -61,12 +61,12 @@ public class AccountController : Controller
 
     if (pudo)
     {
-        return RedirectToAction("CargarTareas","Home");
+        return RedirectToAction("DLogin","Account");
     }
     else
     {
         ViewBag.pudo = pudo;
-        return View("Registrarse");
+        return View("Registrarse","Account");
     }
 }
 

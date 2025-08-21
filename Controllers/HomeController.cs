@@ -12,17 +12,15 @@ public class HomeController : Controller
     {
         _logger = logger;
     }
-    [HttpPost]
     public IActionResult Index()
     {
-        return View();
+        return RedirectToAction("DLogin","Account");
     }
-    [HttpPost]
     public IActionResult CargarTareas()
     {
         int idU = int.Parse(HttpContext.Session.GetString("usuario"));
         ViewBag.Tareas = BD.TraerTareas(idU);
-        return View("Tareas");
+        return View("Tareas","Home");
     }
     [HttpPost]
     public IActionResult DCrearTarea()
