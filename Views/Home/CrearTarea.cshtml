@@ -2,11 +2,9 @@
     ViewData["Title"] = "Index";
 }
 <div>
-    <form Action = '@Url.Action("CrearTarea", "home")'>
-  <input type="text" name="titulo" placeholder="Titulo">
-  <input type="text" name="descripcion" placeholder="Descripcion">
-  <input type="date" name="fecha">
-  <input type="checkbox" name="finalizada"> Finalizada
-  <input type="submit" value="Guardar">
-</form>
+    <form action='@Url.Action("CrearTarea", "Home")' method="post">
+        <input type="text" name="titulo" placeholder="Título" required>
+        <input type="text" name="descripcion" placeholder="Descripción" required>
+        <input type="submit" value="Guardar">
+    </form>
 </div>

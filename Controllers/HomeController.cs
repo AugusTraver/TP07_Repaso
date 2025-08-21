@@ -14,24 +14,24 @@ public class HomeController : Controller
     }
     public IActionResult Index()
     {
-        return RedirectToAction("DLogin","Account");
+        return RedirectToAction("DLogin", "Account");
     }
     public IActionResult CargarTareas()
     {
         int idU = int.Parse(HttpContext.Session.GetString("usuario"));
         ViewBag.Tareas = BD.TraerTareas(idU);
-        return View("Tareas","Home");
+        return View("Tareas", "Home");
     }
-    [HttpPost]
     public IActionResult DCrearTarea()
     {
         return View("CrearTarea");
     }
     [HttpPost]
-    public IActionResult CrearTarea(string titulo, string descripcion, bool finalizada)
+
+    public IActionResult CrearTarea(string titulo, string descripcion)
     {
         int idU = int.Parse(HttpContext.Session.GetString("usuario"));
-        Tarea tarea = new Tarea(titulo, descripcion, DateTime.Now, finalizada, idU);
+        Tarea tarea = new Tarea(titulo, descripcion, DateTime.Now, false, idU);
         BD.CrearTarea(tarea);
         return RedirectToAction("CargarTareas");
     }
@@ -45,14 +45,15 @@ public class HomeController : Controller
         BD.EliminarTarea(idTarea);
         return RedirectToAction("CargarTareas");
     }
-    public IActionResult DActualizarTarea()
+    public IActionResult DActualizarTarea(int idTarea)
     {
+        ViewBag.Tarea = BD.TraerTarea(idTarea);
         return View("ActualizarTarea");
     }
-    public IActionResult ActualizarTarea(string titulo, string descripcion, DateTime fecha, bool finalizada)
+    public IActionResult ActualizarTarea(string titulo, string descripcion, DateTime fecha)
     {
         int idU = int.Parse(HttpContext.Session.GetString("usuario"));
-        Tarea tarea = new Tarea(titulo, descripcion, fecha, finalizada, idU);
+        Tarea tarea = new Tarea(titulo, descripcion, fecha, false, idU);
         BD.ActualizarTarea(tarea);
         return RedirectToAction("CargarTareas");
     }

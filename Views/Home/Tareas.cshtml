@@ -2,13 +2,26 @@
 @{
     ViewData["Title"] = "Index";
 }
-<a href='@Url.Action("CrearTarea", "home")'>Crear tarea</a>
-<a href='@Url.Action("FinalizarTarea", "home")'>Finalizar tarea</a>
-<a href='@Url.Action("EliminarTarea", "home")'>Eliminar tarea</a>
-<a href='@Url.Action("ActualizarTarea", "home")'>Actualizar tarea</a>
+
  <ul>
-    @foreach (string tarea in ViewBag.Tareas)
+    @foreach (Tarea tarea in ViewBag.Tareas)
     {
-        <li>@tarea</li>
+        <li>@tarea.titulo</li>
+        <li>@tarea.descripcion</li>
+        <li>@tarea.fecha</li>
+       
+  <a href='@Url.Action("FinalizarTarea", "Home", new { idTarea = tarea.Id })'>
+    <button type="button">Finalizar</button>
+</a>
+
+<a href='@Url.Action("EliminarTarea", "Home", new { idTarea = tarea.Id })'>
+    <button type="button">Eliminar</button>
+</a>
+
+<a href='@Url.Action("DActualizarTarea", "Home", new { idTarea = tarea.Id })'>
+    <button type="button">Actualizar</button>
+</a>
     }    
+    <a href='@Url.Action("DCrearTarea", "home")'>Crear tarea</a>
+  
 </ul>

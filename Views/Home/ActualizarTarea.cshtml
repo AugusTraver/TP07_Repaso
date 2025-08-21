@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Index";
+}
+<div>
+    <form action='@Url.Action("ActualizarTarea", "Home")' method="post">
+        <input type="text" name="titulo" placeholder="@ViewBag.Tarea.titulo" required>
+        <input type="text" name="descripcion" placeholder="@ViewBag.Tarea.descripcion" required>
+        <input type="date" name="fecha" required>
+        <input type="submit" value="Guardar">
+    </form>
+</div>
