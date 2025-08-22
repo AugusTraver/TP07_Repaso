@@ -77,12 +77,12 @@ public class BD
             return tarea;
         }
     }
-    public static void ActualizarTarea(Tarea tarea)
+    public static void ActualizarTarea(Tarea tarea, int idTarea)
     {
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             string updateQuery = "UPDATE Tareas SET titulo = @pTitulo, descripcion = @pDescripcion, fecha = @pFecha, finalizada = @pFinalizada, idU = @pIdu WHERE id = @pId";
-            connection.Execute(updateQuery, new { pTitulo = tarea.titulo, pDescripcion = tarea.descripcion, pFecha = tarea.fecha, pFinalizada = tarea.finalizada, pIdu = tarea.idU, pId = tarea.Id });
+            connection.Execute(updateQuery, new { pTitulo = tarea.titulo, pDescripcion = tarea.descripcion, pFecha = tarea.fecha, pFinalizada = tarea.finalizada, pIdu = tarea.idU, pId = idTarea });
         }
     }
 

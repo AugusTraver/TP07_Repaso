@@ -6,6 +6,7 @@
         <input type="text" name="titulo" placeholder="@ViewBag.Tarea.titulo" required>
         <input type="text" name="descripcion" placeholder="@ViewBag.Tarea.descripcion" required>
         <input type="date" name="fecha" required>
+        <input type="hidden" name="TareaId" value="@ViewBag.Tarea.Id" />
         <input type="submit" value="Guardar">
     </form>
 </div>

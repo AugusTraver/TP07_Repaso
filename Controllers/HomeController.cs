@@ -26,8 +26,8 @@ public class HomeController : Controller
     {
         return View("CrearTarea");
     }
-    [HttpPost]
 
+    [HttpPost]
     public IActionResult CrearTarea(string titulo, string descripcion)
     {
         int idU = int.Parse(HttpContext.Session.GetString("usuario"));
@@ -50,11 +50,12 @@ public class HomeController : Controller
         ViewBag.Tarea = BD.TraerTarea(idTarea);
         return View("ActualizarTarea");
     }
-    public IActionResult ActualizarTarea(string titulo, string descripcion, DateTime fecha)
+    [HttpPost]
+    public IActionResult ActualizarTarea(string titulo, string descripcion, DateTime fecha,int idTarea)
     {
         int idU = int.Parse(HttpContext.Session.GetString("usuario"));
         Tarea tarea = new Tarea(titulo, descripcion, fecha, false, idU);
-        BD.ActualizarTarea(tarea);
+        BD.ActualizarTarea(tarea, idTarea);
         return RedirectToAction("CargarTareas");
     }
 }

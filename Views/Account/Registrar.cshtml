@@ -21,6 +21,9 @@
 
     <input type="submit" value="Registrarse" />
 </form>
+<form action='@Url.Action("DLogin", "Account")' method="post">
+  <button type="submit">Volver</button>
+</form>
 @if (ViewBag.pudo != null && ViewBag.pudo == false)
 {
     <div style="color:red; font-weight:bold; margin-top:10px;">
