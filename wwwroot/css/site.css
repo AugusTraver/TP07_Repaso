@@ -1,0 +1,106 @@
+/* Reset básico */
+body, h1, h2, h3, h4, h5, h6, ul, li, p, form, input, button, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6fa;
+    color: #222;
+    min-height: 100vh;
+    /* Elimina el scroll vertical innecesario */
+    overflow-y: hidden;
+}
+main {
+    max-width: 700px;      /* Reduce el ancho */
+    margin: 16px auto;     /* Reduce el margen superior/inferior */
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 16px;         /* Reduce el padding */
+}
+
+h1 {
+    font-size: 1.5rem;     /* Reduce el tamaño */
+    margin-bottom: 8px;
+    color: #2a5d9f;
+}
+
+ul {
+    list-style: none;
+    margin-bottom: 12px;   /* Reduce el margen */
+}
+
+li {
+    margin-bottom: 4px;    /* Reduce el margen */
+    font-size: 1rem;
+}
+
+form {
+    margin-bottom: 8px;    /* Reduce el margen */
+    background: #f9fafb;
+    padding: 8px;          /* Reduce el padding */
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+input[type="text"], input[type="password"], input[type="date"], input[type="file"] {
+    width: 90%;            /* Reduce el ancho */
+    padding: 6px;          /* Reduce el padding */
+    margin-bottom: 6px;    /* Reduce el margen */
+    border: 1px solid #bfc9d1;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+
+input[type="submit"], button {
+    background: #2a5d9f;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;     /* Reduce el padding */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 4px;     /* Reduce el margen */
+    margin-left: 0;
+    transition: background 0.2s;
+    display: block;
+    margin-bottom: 0;
+}
+
+
+input[type="submit"]:hover, button:hover {
+    background: #1d406b;
+}
+
+a {
+    color: #2a5d9f;
+    text-decoration: none;
+    margin-right: 12px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.Sumbit_Login, .Sumbit_Registrarse {
+    max-width: 350px;      /* Reduce el ancho */
+    margin: 16px auto;     /* Reduce el margen */
+    background: #fff;
+    padding: 12px;         /* Reduce el padding */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+img {
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 8px auto 0 auto;
+}
