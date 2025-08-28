@@ -11,9 +11,10 @@ body {
     background-color: #1a1a1a;
     min-height: 100vh;
     display: flex;
-    justify-content: center; /* centro horizontal */
-    align-items: center;     /* centro vertical */
+    flex-direction: column; /* Apila el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
     color: #fff;
+    padding: 20px; /* Agrega un poco de espacio en los bordes */
 }
 
 /* Formularios generales */
@@ -25,7 +26,8 @@ form {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-bottom: 25px;
+    margin-top: 70px;
+    margin-bottom: 4%;
     width: 100%;
     max-width: 400px;
 }
@@ -146,9 +148,9 @@ button:hover {
   
   /* Imagen centrada y chica */
   .Sumbit_Login img {
-    width: 80px;    /* igual que en tu captura */
-    height: 80px;
-    border-radius: 50%;
+    width: 30%;    /* igual que en tu captura */
+    height: auto;
+    border-radius: 10%;
     margin-bottom: 10px;
     object-fit: cover;
     border: 3px solid #d4af37; /* borde dorado */
