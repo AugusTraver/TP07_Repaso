@@ -1,106 +1,171 @@
 /* Reset básico */
-body, h1, h2, h3, h4, h5, h6, ul, li, p, form, input, button, div {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/* Fondo general */
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f4f6fa;
-    color: #222;
+    background-color: #1a1a1a;
     min-height: 100vh;
-    /* Elimina el scroll vertical innecesario */
-    overflow-y: hidden;
-}
-main {
-    max-width: 700px;      /* Reduce el ancho */
-    margin: 16px auto;     /* Reduce el margen superior/inferior */
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    padding: 16px;         /* Reduce el padding */
+    display: flex;
+    justify-content: center; /* centro horizontal */
+    align-items: center;     /* centro vertical */
+    color: #fff;
 }
 
-h1 {
-    font-size: 1.5rem;     /* Reduce el tamaño */
-    margin-bottom: 8px;
-    color: #2a5d9f;
-}
-
-ul {
-    list-style: none;
-    margin-bottom: 12px;   /* Reduce el margen */
-}
-
-li {
-    margin-bottom: 4px;    /* Reduce el margen */
-    font-size: 1rem;
-}
-
+/* Formularios generales */
 form {
-    margin-bottom: 8px;    /* Reduce el margen */
-    background: #f9fafb;
-    padding: 8px;          /* Reduce el padding */
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    background-color: #2c2c2c; /* contraste con fondo */
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    width: 100%;
+    max-width: 400px;
 }
 
-
-input[type="text"], input[type="password"], input[type="date"], input[type="file"] {
-    width: 90%;            /* Reduce el ancho */
-    padding: 6px;          /* Reduce el padding */
-    margin-bottom: 6px;    /* Reduce el margen */
-    border: 1px solid #bfc9d1;
-    border-radius: 4px;
-    font-size: 0.95rem;
-}
-
-
-input[type="submit"], button {
-    background: #2a5d9f;
-    color: #fff;
-    border: none;
-    padding: 8px 14px;     /* Reduce el padding */
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-right: 4px;     /* Reduce el margen */
-    margin-left: 0;
-    transition: background 0.2s;
-    display: block;
-    margin-bottom: 0;
-}
-
-
-input[type="submit"]:hover, button:hover {
-    background: #1d406b;
-}
-
-a {
-    color: #2a5d9f;
-    text-decoration: none;
-    margin-right: 12px;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.Sumbit_Login, .Sumbit_Registrarse {
-    max-width: 350px;      /* Reduce el ancho */
-    margin: 16px auto;     /* Reduce el margen */
-    background: #fff;
-    padding: 12px;         /* Reduce el padding */
+/* Inputs */
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="file"] {
+    padding: 12px 15px;
+    border: 1px solid #555;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background-color: #2c2c2c;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
 }
 
-img {
-    max-width: 90%;
-    height: auto;
-    display: block;
-    margin: 8px auto 0 auto;
+/* Placeholder visible */
+input::placeholder {
+    color: #ccc;
+}
+
+/* Focus en inputs */
+input:focus {
+    border-color: #d4af37; /* dorado del logo */
+    background-color: #333;
+}
+
+/* Botones */
+input[type="submit"],
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #d4af37; /* dorado */
+    color: #1a1a1a; /* texto oscuro sobre dorado */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background: #ffde7a;
+    transform: translateY(-2px);
+}
+
+/* Contenedor de tareas */
+.tareas-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto 0 auto; /* separa y centra */
+  }
+  .form-container {
+    display: flex;
+    justify-content: center; /* centra el form horizontalmente */
+    margin-bottom: 30px;     /* espacio con las tarjetas */
+  }
+  
+/* Tarjetas de tareas */
+.tarea-card {
+    background: #2c2c2c;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarea-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+}
+
+.tarea-card strong {
+    font-size: 18px;
+    color: #fff;
+}
+
+.tarea-card span {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Botones dentro de tarjetas */
+.tarea-card a button {
+    background: #d4af37;
+    color: #1a1a1a;
+}
+
+.tarea-card a button:hover {
+    background: #ffde7a;
+}
+
+/* Imagen en login/registro */
+.login-wrapper {
+    display: flex;
+    justify-content: center;  /* centra horizontal */
+    align-items: center;      /* centra vertical */
+    min-height: 100vh;
+    width: 100%;
+  }
+  
+  .Sumbit_Login {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centra imagen y formularios */
+    gap: 20px;
+  }
+  
+  /* Imagen centrada y chica */
+  .Sumbit_Login img {
+    width: 80px;    /* igual que en tu captura */
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+    border: 3px solid #d4af37; /* borde dorado */
+  }
+
+
+/* Mensajes de error */
+div[style*="color:red"] {
+    background-color: rgba(255,0,0,0.2);
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .tareas-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }

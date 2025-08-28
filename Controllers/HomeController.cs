@@ -22,10 +22,6 @@ public class HomeController : Controller
         ViewBag.Tareas = BD.TraerTareas(idU);
         return View("Tareas", "Home");
     }
-    public IActionResult DCrearTarea()
-    {
-        return View("CrearTarea");
-    }
 
     [HttpPost]
     public IActionResult CrearTarea(string titulo, string descripcion)

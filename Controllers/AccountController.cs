@@ -66,7 +66,7 @@ public class AccountController : Controller
     else
     {
         ViewBag.pudo = pudo;
-        return View("Registrarse","Account");
+        return View("Registrar","Account");
     }
 }
 

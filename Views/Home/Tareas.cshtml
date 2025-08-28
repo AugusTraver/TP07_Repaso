@@ -1,27 +1,39 @@
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Tareas";
 }
 
- <ul>
-    @foreach (Tarea tarea in ViewBag.Tareas)
+<div class="form-container">
+    <!-- Formulario para crear una nueva tarea -->
+    <form action='@Url.Action("CrearTarea", "Home")' method="post">
+        <input type="text" name="titulo" placeholder="Título" required>
+        <input type="text" name="descripcion" placeholder="Descripción" required>
+        <input type="submit" value="Guardar">
+    </form>
+</div>
+
+
+<div class="tareas-container">
+    @foreach (var tarea in ViewBag.Tareas)
     {
-        <li>@tarea.titulo</li>
-        <li>@tarea.descripcion</li>
-        <li>@tarea.fecha</li>
-       
-  <a href='@Url.Action("FinalizarTarea", "Home", new { idTarea = tarea.Id })'>
-    <button type="button">Finalizar</button>
-</a>
+        <div class="tarea-card">
+            <strong>@tarea.titulo</strong>
+            <span>@tarea.descripcion</span>
+            <span>@tarea.fecha.ToString("yyyy-MM-dd")</span>
 
-<a href='@Url.Action("EliminarTarea", "Home", new { idTarea = tarea.Id })'>
-    <button type="button">Eliminar</button>
-</a>
+            <!-- Botón Finalizar -->
+            <a href='@Url.Action("FinalizarTarea", "Home", new { idTarea = tarea.Id })'>
+                <button type="button">Finalizar</button>
+            </a>
 
-<a href='@Url.Action("DActualizarTarea", "Home", new { idTarea = tarea.Id })'>
-    <button type="button">Actualizar</button>
-</a>
-    }    
-    <a href='@Url.Action("DCrearTarea", "Home")'>Crear tarea</a>
-  
-</ul>
+            <!-- Botón Eliminar -->
+            <a href='@Url.Action("EliminarTarea", "Home", new { idTarea = tarea.Id })'>
+                <button type="button">Eliminar</button>
+            </a>
+
+            <!-- Botón Editar / Actualizar -->
+            <a href='@Url.Action("DActualizarTarea", "Home", new { idTarea = tarea.Id })'>
+                <button type="button">Editar</button>
+            </a>
+        </div>
+    }
+</div>
